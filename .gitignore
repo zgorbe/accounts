@@ -1,0 +1,12 @@
+common/target
+common/target/**/*
+common/.*
+rest-service/target
+rest-service/target/**/*
+rest-service/.*
+cli/target
+cli/target/**/*
+cli/.*
+.settings
+.settings/**/*
+.project

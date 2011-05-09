@@ -1,0 +1,7 @@
+A micro project for managing accounts.
+Technologies:
+DB4O
+Spring 3.0
+JAX RS 1.1
+Maven 2
+Tomcat 6
