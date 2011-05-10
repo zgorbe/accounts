@@ -1,6 +1,6 @@
 A micro project for managing accounts.
 Technologies:
-DB4O
+JPA 2.0
 Spring 3.0
 Jersey 1.1
 Maven 2

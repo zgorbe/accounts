@@ -1,8 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * DB4O has been removed from the project. 
+ * The DB4O Maven Repo is permanently unavailable. Let's move to JPA 2
  */
 
+/**
 package com.zotyo.accounts.persistence;
 
 import com.db4o.Db4oEmbedded;
@@ -17,10 +18,7 @@ import javax.servlet.ServletContext;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.ServletContextAware;
 
-/**
- *
- * @author Zoli
- */
+
 @Service
 public class AccountDAOImpl implements AccountDAO, ServletContextAware {
     private ServletContext servletContext;
@@ -139,3 +137,5 @@ public class AccountDAOImpl implements AccountDAO, ServletContextAware {
         servletContext = sc;
     }
 }
+*
+**/
