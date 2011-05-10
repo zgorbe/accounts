@@ -7,7 +7,7 @@
 	<persistence-unit name="AccountsPU" transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>jdbc/AccountsDS</jta-data-source>
-		<class>com.zotyo.accounts.model.Account</class>
+		<class>com.zotyo.accounts.entity.AccountEntity</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>

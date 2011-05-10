@@ -1,42 +1,57 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package com.zotyo.accounts.model;
-
+package com.zotyo.accounts.entity;
 import java.util.Date;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.persistence.Transient;
+import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author Zoli
  */
 
-@XmlRootElement
-public class Account {
+@Entity
+@Table(name = "accounts", uniqueConstraints={@UniqueConstraint(columnNames={"project"})})
+public class AccountEntity {
+	@Id
+    @Column(name = "id")
+    private Integer id;
 	
+	@Column(name = "project")
     private String project;
+	@Column(name = "entryname")
     private String entryname;
+	@Column(name = "url")
     private String url;
+	@Column(name = "username")
     private String username;
+	@Column(name = "password")
     private String password;
+	@Column(name = "tag")
     private String tag;
+	@Column(name = "last_modified")
+	@Temporal(TemporalType.TIMESTAMP)	
     private Date lastModified;
     
-    private transient String password2;
-    private transient String errorMessage;
+    @Transient
+    private String password2;
+    @Transient
+    private String errorMessage;
 
-    public Account() {
+    public AccountEntity() {
     }
 
-    public Account(String project, String entryname) {
+    public AccountEntity(String project, String entryname) {
         this.project = project;
         this.entryname = entryname;
     }
     
-    public Account(String project, String entryname, String url, String username,
+    public AccountEntity(String project, String entryname, String url, String username,
             String password, String password2, String tag) {
         this.project = project;
         this.entryname = entryname;
@@ -46,6 +61,14 @@ public class Account {
         this.password2 = password2;
         this.tag = tag;
     }
+    
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
     
     public String getEntryname() {
         return entryname;
@@ -138,13 +161,5 @@ public class Account {
     	}
     	sb.append("\nLast Modified: " + this.lastModified);
     	return sb.toString();
-    }
-    
-    public static boolean validateAccount(Account a) {
-        if (!a.getPassword().equals(a.getPassword2())) {
-            a.setErrorMessage("Password don't match!");
-            return false;
-        }
-        return true;
     }
 }
