@@ -26,6 +26,11 @@
         <name>Maven Central</name>
         <url>http://repo2.maven.org/maven2/</url>
     </repository>
+    <repository>
+      <id>jboss</id>
+      <name>JBoss repository</name>
+      <url>http://repository.jboss.org/maven2</url>
+    </repository>
   </repositories>
 
   <dependencies>

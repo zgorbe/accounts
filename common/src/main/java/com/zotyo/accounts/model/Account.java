@@ -6,6 +6,15 @@
 package com.zotyo.accounts.model;
 
 import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.persistence.Transient;
+import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -13,17 +22,33 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Zoli
  */
 
+@Entity
+@Table(name = "accounts", uniqueConstraints={@UniqueConstraint(columnNames={"project"})})
 @XmlRootElement
 public class Account {
+	@Id
+    @Column(name = "id")
+    private Integer id;
+	
+	@Column(name = "project")
     private String project;
+	@Column(name = "entryname")
     private String entryname;
+	@Column(name = "url")
     private String url;
+	@Column(name = "username")
     private String username;
+	@Column(name = "password")
     private String password;
+	@Column(name = "tag")
     private String tag;
+	@Column(name = "last_modified")
+	@Temporal(TemporalType.TIMESTAMP)	
     private Date lastModified;
-
+    
+    @Transient
     private transient String password2;
+    @Transient
     private transient String errorMessage;
 
     public Account() {
@@ -44,6 +69,15 @@ public class Account {
         this.password2 = password2;
         this.tag = tag;
     }
+    
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+    
     public String getEntryname() {
         return entryname;
     }

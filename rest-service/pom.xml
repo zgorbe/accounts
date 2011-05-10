@@ -72,6 +72,19 @@
         <artifactId>asm</artifactId>
         <version>3.3</version>
     </dependency>
+
+	<!-- dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-search</artifactId>
+      <version>3.1.0.GA</version>
+    </dependency-->
+
+	<dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>3.5.1-Final</version>
+    </dependency>
+
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
