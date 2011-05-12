@@ -2,13 +2,18 @@ package com.zotyo.accounts.persistence;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import javax.persistence.EntityManagerFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import com.zotyo.accounts.model.Account;
 
-@Service
+@Repository
 public class AccountDAOJPAImpl implements AccountDAO {
 
+	@Autowired
+	private EntityManagerFactory entityManagerFactory;
+	
 	public void createAccount(Account a) {
 		// TODO Auto-generated method stub
 
