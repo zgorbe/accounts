@@ -2,21 +2,28 @@ package com.zotyo.accounts.persistence;
 
 import java.util.List;
 
-import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.zotyo.accounts.entity.AccountEntity;
 import com.zotyo.accounts.model.Account;
 
 @Repository
 public class AccountDAOJPAImpl implements AccountDAO {
 
-	@Autowired
-	private EntityManagerFactory entityManagerFactory;
+    @PersistenceContext(unitName = "AccountsPU")
+    private EntityManager em;
 	
 	public void createAccount(Account a) {
-		// TODO Auto-generated method stub
-
+		AccountEntity ae = new AccountEntity(a.getProject(), a.getEntryname());
+		ae.setPassword(a.getPassword());
+		ae.setPassword2(a.getPassword2());
+		ae.setTag(a.getTag());
+		ae.setUrl(a.getUrl());
+		ae.setLastModified(a.getLastModified());
+		em.persist(ae);
 	}
 
 	public boolean deleteAccount(Account a) {
