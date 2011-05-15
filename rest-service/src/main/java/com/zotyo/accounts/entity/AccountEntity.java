@@ -1,7 +1,10 @@
 package com.zotyo.accounts.entity;
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Transient;
@@ -19,6 +22,8 @@ import javax.persistence.TemporalType;
 @Table(name = "accounts", uniqueConstraints={@UniqueConstraint(columnNames={"project"})})
 public class AccountEntity {
 	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
 	
