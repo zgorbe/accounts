@@ -19,22 +19,18 @@ http://www.springframework.org/schema/jee http://www.springframework.org/schema/
 
 	<!-- ======================  EntityManagerFactory  ==================== -->
 	
-	<bean id="entityManagerFactory"
-     class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-     <property name="dataSource" ref="dataSource"/>
-     <property name="jpaVendorAdapter">
-        <bean
-        class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-           <property name="showSql" value="true" />
-           <property name="generateDdl" value="true" />
-           <property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
-        </bean>
-     </property>
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="jpaVendorAdapter">
+		   <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		      <property name="showSql" value="true" />
+		      <property name="generateDdl" value="true" />
+		      <property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
+		   </bean>
+		</property>
+	</bean> 
     
-  </bean>
-  
-  
-  <!-- ======================    TransactionManager   ==================== -->
+    <!-- ======================    TransactionManager   ==================== -->
 	
     <!-- Transaction manager for a single JPA EntityManagerFactory (alternative to JTA) -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">

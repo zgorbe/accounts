@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
  */
 
 @Entity
-@Table(name = "accounts", uniqueConstraints={@UniqueConstraint(columnNames={"project"})})
+@Table(name = "accounts", uniqueConstraints={@UniqueConstraint(columnNames={"project", "entryname"})})
 public class AccountEntity {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +31,7 @@ public class AccountEntity {
     private String project;
 	@Column(name = "entryname")
     private String entryname;
+	
 	@Column(name = "url")
     private String url;
 	@Column(name = "username")

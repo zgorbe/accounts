@@ -6,10 +6,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.zotyo.accounts.entity.AccountEntity;
 import com.zotyo.accounts.model.Account;
 
+@Transactional
 @Repository
 public class AccountDAOJPAImpl implements AccountDAO {
 
@@ -23,6 +25,7 @@ public class AccountDAOJPAImpl implements AccountDAO {
 		ae.setTag(a.getTag());
 		ae.setUrl(a.getUrl());
 		ae.setLastModified(a.getLastModified());
+		ae.setUsername(a.getUsername());
 		em.persist(ae);
 	}
 
