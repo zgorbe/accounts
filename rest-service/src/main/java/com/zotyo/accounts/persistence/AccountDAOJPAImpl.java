@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.zotyo.accounts.entity.AccountEntity;
 import com.zotyo.accounts.model.Account;
+import com.zotyo.accounts.util.EntityUtil;
 
 @Transactional
 @Repository
@@ -19,13 +20,7 @@ public class AccountDAOJPAImpl implements AccountDAO {
     private EntityManager em;
 	
 	public void createAccount(Account a) {
-		AccountEntity ae = new AccountEntity(a.getProject(), a.getEntryname());
-		ae.setPassword(a.getPassword());
-		ae.setPassword2(a.getPassword2());
-		ae.setTag(a.getTag());
-		ae.setUrl(a.getUrl());
-		ae.setLastModified(a.getLastModified());
-		ae.setUsername(a.getUsername());
+		AccountEntity ae = EntityUtil.getAccountEntity(a);
 		em.persist(ae);
 	}
 
