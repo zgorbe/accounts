@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Column;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
@@ -20,6 +22,10 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "accounts", uniqueConstraints={@UniqueConstraint(columnNames={"project", "entryname"})})
+@NamedQueries({
+    @NamedQuery(name = "AccountEntity.findByP", query = "SELECT a FROM AccountEntity a WHERE a.project = :project"),
+    @NamedQuery(name = "AccountEntity.findByP_E", query = "SELECT a FROM AccountEntity a WHERE a.project = :project AND a.entryname = :entryname")
+    })
 public class AccountEntity {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
