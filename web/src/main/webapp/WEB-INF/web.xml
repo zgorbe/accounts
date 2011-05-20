@@ -16,7 +16,7 @@
     
 	<servlet-mapping>
 	    <servlet-name>dispatcher</servlet-name>
-	    <url-pattern>/accounts/*</url-pattern>
+	    <url-pattern>/*</url-pattern>
 	</servlet-mapping>
     
     <session-config>
@@ -31,7 +31,7 @@
     <security-constraint>
 	    <web-resource-collection>
 	      <web-resource-name>Accounts Web</web-resource-name>
-	      <url-pattern>/accounts/*</url-pattern>
+	      <url-pattern>/*</url-pattern>
 	    </web-resource-collection>
 	    <auth-constraint>
 	      <role-name>admin</role-name>
