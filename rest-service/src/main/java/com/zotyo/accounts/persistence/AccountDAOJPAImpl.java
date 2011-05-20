@@ -32,17 +32,12 @@ public class AccountDAOJPAImpl implements AccountDAO {
 	}
 
 	public Account getAccountByProjectAndName(String project, String name) {
-        Query query = em.createNamedQuery("AccountEntity.findByP_E");
-        query.setParameter("project", project);
-        query.setParameter("entryname", name);
-
-        List<AccountEntity> result = query.getResultList();
-        if (result.size() == 0) {
+        AccountEntity a = getAccountByP_N(project, name);
+        if (a != null) {
+            return EntityUtil.getAccount(a);
+        } else {
             return null;
         }
-
-        AccountEntity a = result.get(0);
-        return EntityUtil.getAccount(a);
 	}
 
 	public List<Account> getAccounts() {
@@ -66,9 +61,22 @@ public class AccountDAOJPAImpl implements AccountDAO {
 	}
 
 	public Account updateAccount(Account a) {
-	    AccountEntity ae = EntityUtil.getAccountEntity(a);
+	    AccountEntity ae = getAccountByP_N(a.getProject(), a.getEntryname());
+	    EntityUtil.copyAccountProperties(ae, a);
         em.merge(ae);
 		return a;
 	}
+    
+	private AccountEntity getAccountByP_N(String project, String name) {
+        Query query = em.createNamedQuery("AccountEntity.findByP_E");
+	    query.setParameter("project", project);
+        query.setParameter("entryname", name);
 
+        List<AccountEntity> result = query.getResultList();
+        if (result.size() == 0) {
+            return null;
+        }
+        return result.get(0);
+    }
+	
 }

@@ -17,4 +17,14 @@ public class EntityUtil {
         rv.setLastModified(a.getLastModified());
         return rv;
     }
+    public static void copyAccountProperties(AccountEntity target, Account src) {
+        target.setProject(src.getProject());
+        target.setEntryname(src.getEntryname());
+        target.setUrl(src.getUrl());
+        target.setUsername(src.getUsername());
+        target.setPassword(src.getPassword());
+        target.setPassword2(src.getPassword2());
+        target.setTag(src.getTag());
+        target.setLastModified(src.getLastModified());
+    }
 }
