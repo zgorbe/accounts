@@ -12,6 +12,7 @@
     <module>common</module>
     <module>rest-service</module>
     <module>cli</module>
+    <module>web-mvc</module>
   </modules>
   
   <repositories>

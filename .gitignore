@@ -7,6 +7,9 @@ rest-service/.*
 cli/target
 cli/target/**/*
 cli/.*
+web-mvc/target
+web-mvc/target/**/*
+web-nvc/.*
 .settings
 .settings/**/*
 .project
