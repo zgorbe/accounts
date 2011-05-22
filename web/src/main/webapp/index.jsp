@@ -1,2 +1,2 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% response.sendRedirect("accounts/test-view"); %>
+<% response.sendRedirect("accounts/home.html"); %>

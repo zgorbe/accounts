@@ -4,10 +4,10 @@
 	<xsl:output method="html" omit-xml-declaration="yes"/>
 
 	<xsl:template match="/">
-		<html>
+		<html xmlns="http://www.w3.org/1999/xhtml">
 			<body>
-			  <h3>XSLT View</h3>
-			  <p style="color:green">
+			  <h3>Accounts</h3>
+			  <p>
 			  	<xsl:value-of select="."/>
 				and rendered using XSLT
 			  </p>

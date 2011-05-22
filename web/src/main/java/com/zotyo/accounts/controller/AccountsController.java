@@ -9,11 +9,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AccountsController {
-    @RequestMapping("/accounts/{view}")
-    public ModelAndView xmlData(@PathVariable("view") String view) {
+    @RequestMapping("/accounts/home.html")
+    public ModelAndView home() {
         final StringReader xmlReader = new StringReader(
                 "<?xml version='1.0' encoding='ISO-8859-1'?>" +
                 "<message>This is added to the model in the XML</message>");
-        return new ModelAndView(view, "xmlSource", xmlReader);
+        return new ModelAndView("home", "xmlSource", xmlReader);
     }
 }
