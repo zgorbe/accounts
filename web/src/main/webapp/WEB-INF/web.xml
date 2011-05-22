@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-    <!-- context-param>
+    <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/applicationContext.xml</param-value>
-    </context-param -->
+    </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -16,7 +16,7 @@
     
 	<servlet-mapping>
 	    <servlet-name>dispatcher</servlet-name>
-	    <url-pattern>/*</url-pattern>
+	    <url-pattern>/</url-pattern>
 	</servlet-mapping>
     
     <session-config>
@@ -28,7 +28,7 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
     
-    <security-constraint>
+    <!-- security-constraint>
 	    <web-resource-collection>
 	      <web-resource-name>Accounts Web</web-resource-name>
 	      <url-pattern>/*</url-pattern>
@@ -41,6 +41,6 @@
     <login-config>
 	    <auth-method>BASIC</auth-method>
 	    <realm-name>Service desk members-only</realm-name>
-    </login-config>
+    </login-config -->
     
 </web-app>
