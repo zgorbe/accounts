@@ -149,6 +149,7 @@ public class AccountsClientImpl implements AccountsClient {
 
 	public List<Account> getAccounts() {
 		HttpGet getMethod = new HttpGet(url);
+		getMethod.addHeader(BasicScheme.authenticate(credentials,"US-ASCII",false));
 		return invokeAccountsGetMethod(getMethod);
 	}
 
@@ -178,5 +179,32 @@ public class AccountsClientImpl implements AccountsClient {
 		return accounts;
 		
 	}
-	
+    
+    public String getAccountsXML() {
+        HttpGet getMethod = new HttpGet(url);
+        getMethod.addHeader(BasicScheme.authenticate(credentials,"US-ASCII",false));
+        return invokeAccountsGetMethodXML(getMethod);
+    }
+    
+    public String getAccountsByProjectXML(String project) {
+        HttpGet getMethod = new HttpGet(url + "?project=" + project);
+        getMethod.addHeader(BasicScheme.authenticate(credentials,"US-ASCII",false));
+        return invokeAccountsGetMethodXML(getMethod);    
+    }
+
+    private String invokeAccountsGetMethodXML(HttpGet getMethod) {
+        String accounts = null;
+        HttpClient httpclient = new DefaultHttpClient();
+        try {
+            HttpResponse response = httpclient.execute(getMethod);
+            HttpEntity entity = response.getEntity();
+            accounts = EntityUtils.toString(entity);
+        } catch (Exception e) {
+            Logger.getLogger(AccountsClientImpl.class.getName()).log(Level.SEVERE, null, e); 
+        } finally {
+            httpclient.getConnectionManager().shutdown();
+        }
+
+        return accounts;
+    }
 }

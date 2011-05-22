@@ -11,4 +11,7 @@ public interface AccountsClient {
     String createAccount(Account a);
     boolean deleteAccount(Account a);
     Account updateAccount(Account a);
+    
+    String getAccountsXML();
+    String getAccountsByProjectXML(String project);
 }

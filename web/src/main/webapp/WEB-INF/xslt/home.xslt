@@ -9,7 +9,6 @@
 			  <h3>Accounts</h3>
 			  <p>
 			  	<xsl:value-of select="."/>
-				and rendered using XSLT
 			  </p>
 			</body>
 		</html>

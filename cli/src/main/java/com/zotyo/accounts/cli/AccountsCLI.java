@@ -15,12 +15,11 @@ import java.io.IOException;
  */
 public class AccountsCLI {
     
-    private static String REST_URL = "http://localhost:8080/accounts/rest/accounts";
     private static final String PROMPT = "Accs> ";
 
 
     private static void initDB() {
-        AccountsClient client = new AccountsClientImpl(REST_URL);
+        AccountsClient client = new AccountsClientImpl(Constants.REST_URL);
         Account test = new Account(Constants.PROJECT_ONE, "test", "test.test.hu", "test", "test", "test", "test");
         client.createAccount(test);
         Account test2 = new Account(Constants.PROJECT_TWO, "test2", "test2.test.hu", "test2", "test2", "test2", "test2");
@@ -46,7 +45,7 @@ public class AccountsCLI {
             usage();
             return;
         }
-        AccountsClient client = new AccountsClientImpl(REST_URL);
+        AccountsClient client = new AccountsClientImpl(Constants.REST_URL);
         Account account = client.getAccountByProjectAndName(lineSplitted[1].toUpperCase(), lineSplitted[2]);
         if (account == null) {
         	account = new Account();
@@ -66,7 +65,7 @@ public class AccountsCLI {
             usage();
             return;
         }
-        AccountsClient client = new AccountsClientImpl(REST_URL);
+        AccountsClient client = new AccountsClientImpl(Constants.REST_URL);
         List<Account> accs = client.getAccountsByProject(lineSplitted[1].toUpperCase());
         if (accs == null) {
         	System.out.println("No entry found for the " + lineSplitted[1] + " project");
@@ -82,7 +81,7 @@ public class AccountsCLI {
             usage();
             return null;
         }
-        AccountsClient client = new AccountsClientImpl(REST_URL);
+        AccountsClient client = new AccountsClientImpl(Constants.REST_URL);
         Account account = client.getAccountByProjectAndName(lineSplitted[1].toUpperCase(), lineSplitted[2]);
         if (account == null) {
         	System.out.println("No entry found");
@@ -100,7 +99,7 @@ public class AccountsCLI {
     	Account a = doGet(lineSplitted);
     	boolean updateNeeded = editAccount(a);
         if (updateNeeded) {
-        	AccountsClient client = new AccountsClientImpl(REST_URL);
+        	AccountsClient client = new AccountsClientImpl(Constants.REST_URL);
         	client.updateAccount(a);
         	System.out.println("Sucessfully updated");
         }
@@ -151,9 +150,9 @@ public class AccountsCLI {
 
     public static void main(String[] args) {
     	if (args.length == 1) {
-    		REST_URL = args[0];
+    	    Constants.REST_URL = args[0];
     	}
-    	System.out.println("Rest service will be called at: " + REST_URL);
+    	System.out.println("Rest service will be called at: " + Constants.REST_URL);
     	
         boolean b = authenticate();
         if (!b) {
