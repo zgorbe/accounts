@@ -78,5 +78,13 @@ public class AccountDAOJPAImpl implements AccountDAO {
         }
         return result.get(0);
     }
+
+    public List<String> getProjectNames() {
+        List<String> rv = new ArrayList<String>();
+        rv.add("one");
+        rv.add("two");
+        rv.add("three");
+        return rv;
+    }
 	
 }

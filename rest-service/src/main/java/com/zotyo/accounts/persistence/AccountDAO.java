@@ -19,4 +19,5 @@ public interface AccountDAO {
     void createAccount(Account a);
     boolean deleteAccount(Account a);
     Account updateAccount(Account a);
+    List<String> getProjectNames();
 }

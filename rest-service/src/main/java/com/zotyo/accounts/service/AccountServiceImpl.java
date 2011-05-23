@@ -48,4 +48,9 @@ public class AccountServiceImpl implements AccountService {
         return accountDAO.updateAccount(a);
     }
 
+    
+    public List<String> getProjectNames() {
+        return accountDAO.getProjectNames();
+    }
+
 }
