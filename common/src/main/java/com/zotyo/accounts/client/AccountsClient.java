@@ -14,4 +14,5 @@ public interface AccountsClient {
     
     String getAccountsXML();
     String getAccountsByProjectXML(String project);
+    String getProjectNamesXML();
 }

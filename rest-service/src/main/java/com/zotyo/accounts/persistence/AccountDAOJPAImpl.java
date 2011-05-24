@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.zotyo.accounts.common.Constants;
 import com.zotyo.accounts.entity.AccountEntity;
 import com.zotyo.accounts.model.Account;
 import com.zotyo.accounts.util.EntityUtil;
@@ -81,9 +82,9 @@ public class AccountDAOJPAImpl implements AccountDAO {
 
     public List<String> getProjectNames() {
         List<String> rv = new ArrayList<String>();
-        rv.add("one");
-        rv.add("two");
-        rv.add("three");
+        rv.add(Constants.PROJECT_ONE);
+        rv.add(Constants.PROJECT_TWO);
+        rv.add(Constants.PROJECT_THREE);
         return rv;
     }
 	

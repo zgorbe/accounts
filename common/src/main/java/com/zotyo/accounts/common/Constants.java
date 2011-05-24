@@ -14,6 +14,8 @@ public class Constants {
     public static final String PROJECT_ONE = "ONE";
     public static final String PROJECT_TWO = "TWO";
     public static final String PROJECT_THREE = "THREE";
+
+    public static final String REST_URL_PROJECTS = "http://localhost:8080/accounts/rest/projects";
     
     public static String REST_URL = "http://localhost:8080/accounts/rest/accounts";
 }

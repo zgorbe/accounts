@@ -207,4 +207,23 @@ public class AccountsClientImpl implements AccountsClient {
 
         return accounts;
     }
+    
+    public String getProjectNamesXML() {
+        HttpGet getMethod = new HttpGet(url);
+        getMethod.addHeader(BasicScheme.authenticate(credentials,"US-ASCII",false));
+        
+        String projectNamesXML = null;
+        HttpClient httpclient = new DefaultHttpClient();
+        try {
+            HttpResponse response = httpclient.execute(getMethod);
+            HttpEntity entity = response.getEntity();
+            projectNamesXML = EntityUtils.toString(entity);
+        } catch (Exception e) {
+            Logger.getLogger(AccountsClientImpl.class.getName()).log(Level.SEVERE, null, e); 
+        } finally {
+            httpclient.getConnectionManager().shutdown();
+        }
+
+        return projectNamesXML;
+    }
 }

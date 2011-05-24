@@ -14,9 +14,9 @@ import com.zotyo.accounts.common.Constants;
 public class AccountsController {
     @RequestMapping("/accounts/home.html")
     public ModelAndView home() {
-        AccountsClient client = new AccountsClientImpl(Constants.REST_URL);
-        String accounts = client.getAccountsXML();
-        final StringReader xmlReader = new StringReader(accounts);
+        AccountsClient client = new AccountsClientImpl(Constants.REST_URL_PROJECTS);
+        String projects = client.getProjectNamesXML();
+        final StringReader xmlReader = new StringReader(projects);
         return new ModelAndView("home", "xmlSource", xmlReader);
     }
 }

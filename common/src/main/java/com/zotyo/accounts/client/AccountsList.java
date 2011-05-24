@@ -9,7 +9,7 @@ import com.zotyo.accounts.model.Account;
 @XmlRootElement(name="accounts")
 public class AccountsList {
 	
-	List<Account> accountsList;
+	private List<Account> accountsList;
 
 	@XmlElement(name="account")
 	public List<Account> getAccounts() {

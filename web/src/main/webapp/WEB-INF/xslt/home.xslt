@@ -6,9 +6,15 @@
 	<xsl:template match="/">
 		<html xmlns="http://www.w3.org/1999/xhtml">
 			<body>
-			  <h3>Accounts</h3>
+			  <h3>Projects</h3>
 			  <p>
-			  	<xsl:value-of select="."/>
+				<ul>
+				  <xsl:for-each select="projects/project">
+				    <li>
+				      <xsl:value-of select="." />
+				    </li>
+				  </xsl:for-each>
+				</ul>
 			  </p>
 			</body>
 		</html>
