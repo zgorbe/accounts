@@ -8,7 +8,12 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     
     <bean id="viewResolver" class="org.springframework.web.servlet.view.XmlViewResolver" />
 
-    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" 
-    	p:mappings="/accounts/*=accountsController" />
-
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <value>
+                /accounts/*=accountsController
+                /accounts/projects/*=accountsController
+            </value>
+        </property>
+    </bean>    	
 </beans>
