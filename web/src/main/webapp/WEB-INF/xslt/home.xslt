@@ -11,19 +11,13 @@
 				<ul>
 				  <xsl:for-each select="projects/project">
 				    <li>
-				      <xsl:choose>
-        			    <xsl:when test=". = 'ONE'">
-        			      <a href="projects/ONE.html">ONE</a>  
-        			    </xsl:when>
-        			    <xsl:when test=". = 'TWO'">
-        			      <a href="projects/TWO.html">TWO</a>
-        			    </xsl:when>
-        			    <xsl:when test=". = 'THREE'">
-        			      <a href="projects/THREE.html">THREE</a>
-        			    </xsl:when>
-        			    <xsl:otherwise />
-        			  </xsl:choose>	
-				    </li>
+				      <a>
+				        <xsl:attribute name="href">
+				  	      <xsl:value-of select="concat('projects/',.,'.html')" />
+				  	    </xsl:attribute>
+				  	    <xsl:value-of select="." />
+				  	  </a>
+				  	</li>
 				  </xsl:for-each>
 				</ul>
 			  </p>
