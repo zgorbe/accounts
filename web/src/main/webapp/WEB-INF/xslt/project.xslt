@@ -8,11 +8,11 @@
 			<body>
 			  <h3>Accounts</h3>
 			  <p>
-				<ul>
-				  <xsl:for-each select="accounts/account">
-				  	<xsl:value-of select="."></xsl:value-of>
-				  </xsl:for-each>
-				</ul>
+			    <ul>
+			      <xsl:for-each select="accounts/account">
+			        <xsl:value-of select="." />
+			      </xsl:for-each>
+			    </ul>
 			  </p>
 			</body>
 		</html>
