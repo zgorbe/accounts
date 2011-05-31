@@ -39,7 +39,7 @@ public class AccountResource {
     private AccountService accountService;
 
     @GET
-    @Produces("application/xml")
+    @Produces({"application/xml", "application/json"})
     public List<Account> getAccountsXML(@DefaultValue("ANY") @QueryParam("project") String project) {
         List<Account> accounts;
         if (project.equals("ANY")) {
@@ -102,7 +102,7 @@ public class AccountResource {
     }
     
     @GET @Path("{project}/{name}")
-    @Produces("application/xml")
+    @Produces({"application/xml", "application/json"})
     public Account getAccount(@PathParam("project") String project, @PathParam("name") String entryname) {
         return accountService.getAccountByProjectAndName(project, entryname);
     }
@@ -110,7 +110,7 @@ public class AccountResource {
 
     @PUT
     @Consumes("application/xml")
-    @Produces("application/xml")
+    @Produces({"application/xml", "application/json"})
     public Account updateAccount(String representation) {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(Account.class);

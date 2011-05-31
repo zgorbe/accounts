@@ -14,6 +14,8 @@ import com.zotyo.accounts.model.Account;
 
 @Controller
 public class AccountsController {
+	public static final String EMPTY_ACCOUNT = "<account></account>";
+	
     @RequestMapping("/accounts/home.html")
     public ModelAndView home() {
         AccountsClient client = new AccountsClientImpl(Constants.REST_URL_PROJECTS);
@@ -32,6 +34,7 @@ public class AccountsController {
     
     @RequestMapping(value="/accounts/new.html")
     public ModelAndView newAccount() {
-        return new ModelAndView("new");
+    	final StringReader xmlReader = new StringReader(EMPTY_ACCOUNT);
+        return new ModelAndView("new", "xmlSource", xmlReader);
     }
 }
