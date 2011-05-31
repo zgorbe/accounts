@@ -9,5 +9,8 @@
         p:cacheTemplates="false" />
   <bean id="project" class="org.springframework.web.servlet.view.xslt.XsltView"
         p:url="/WEB-INF/xslt/project.xslt"
-        p:cacheTemplates="false" />	        	
+        p:cacheTemplates="false" />
+<bean id="new" class="org.springframework.web.servlet.view.xslt.XsltView"
+        p:url="/WEB-INF/xslt/new.xslt"
+        p:cacheTemplates="false" />        	        	
 </beans>

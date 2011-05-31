@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.zotyo.accounts.client.AccountsClient;
 import com.zotyo.accounts.client.AccountsClientImpl;
 import com.zotyo.accounts.common.Constants;
+import com.zotyo.accounts.model.Account;
 
 @Controller
 public class AccountsController {
@@ -27,5 +28,10 @@ public class AccountsController {
         String projects = client.getAccountsByProjectXML(project);
         final StringReader xmlReader = new StringReader(projects);
         return new ModelAndView("project", "xmlSource", xmlReader);
+    }
+    
+    @RequestMapping(value="/accounts/new.html")
+    public ModelAndView newAccount() {
+        return new ModelAndView("new");
     }
 }

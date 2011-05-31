@@ -6,15 +6,29 @@
 	<xsl:template match="/">
 		<html xmlns="http://www.w3.org/1999/xhtml">
 			<body>
-			  <h3>Accounts</h3>
-			  <p>
-			    <ul>
-			      <xsl:for-each select="accounts/account">
-			        <xsl:value-of select="." />
-			      </xsl:for-each>
-			    </ul>
-			  </p>
+			  <h3><xsl:value-of select="accounts/account[1]/project" /> project</h3>
+			  	<b>Accounts:</b>
+			    <xsl:apply-templates />
+			    <a>
+			        <xsl:attribute name="href">
+			  	      <xsl:value-of 
+			  	        select="concat('/accountsweb/accounts/new.html?project=', accounts/account[1]/project)" />
+			  	    </xsl:attribute>
+			  	    Create new account
+				</a>
+			    &#160;&#160;
+			    <a href="/accountsweb/accounts/home.html">Back to projects</a> 
 			</body>
 		</html>
+	</xsl:template>
+	
+	<xsl:template match="account">
+		<p>
+			<b>Entry name: <xsl:value-of select="entryname" /></b><br/>
+			Url: <xsl:value-of select="url" /><br/>
+			Username: <xsl:value-of select="username" /><br/>
+			Password: <xsl:value-of select="password" /><br/>
+			Tag: <xsl:value-of select="tag" />
+		</p>			
 	</xsl:template>
 </xsl:stylesheet>
