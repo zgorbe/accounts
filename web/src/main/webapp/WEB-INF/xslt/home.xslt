@@ -21,6 +21,9 @@
 				  </xsl:for-each>
 				</ul>
 			  </p>
+			  <p>
+                <a href="/accountsweb/accounts/new.html">Create new account</a>
+			  </p>
 			</body>
 		</html>
 	</xsl:template>

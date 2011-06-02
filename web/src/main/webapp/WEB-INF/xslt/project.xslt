@@ -9,14 +9,6 @@
 			  <h3><xsl:value-of select="accounts/account[1]/project" /> project</h3>
 			  	<b>Accounts:</b>
 			    <xsl:apply-templates />
-			    <a>
-			        <xsl:attribute name="href">
-			  	      <xsl:value-of 
-			  	        select="concat('/accountsweb/accounts/new.html?project=', accounts/account[1]/project)" />
-			  	    </xsl:attribute>
-			  	    Create new account
-				</a>
-			    &#160;&#160;
 			    <a href="/accountsweb/accounts/home.html">Back to projects</a> 
 			</body>
 		</html>
