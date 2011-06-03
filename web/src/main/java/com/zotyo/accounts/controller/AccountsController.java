@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.zotyo.accounts.client.AccountsClient;
 import com.zotyo.accounts.client.AccountsClientImpl;
 import com.zotyo.accounts.common.Constants;
+import com.zotyo.accounts.model.Account;
 
 @Controller
 public class AccountsController {
@@ -43,8 +44,9 @@ public class AccountsController {
     	//final StringReader xmlReader = new StringReader(EMPTY_ACCOUNT);
         return new ModelAndView("new", "xmlSource", xmlReader);
     }
-    
+
     @RequestMapping(value="/accounts/create.html", method=RequestMethod.POST)
-    public void createAccount(HttpServletRequest request, HttpServletResponse response) {
+    public void createAccount(Account account) {
+    	System.out.println(account.getProject());
     }
 }

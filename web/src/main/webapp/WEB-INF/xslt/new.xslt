@@ -8,7 +8,7 @@
 			<body>
 			  <h3>Create new Account</h3>
 			  <p>
-				<form action="/accountsweb/accounts/create.html" method="POST">
+				<form id="account" action="/accountsweb/accounts/create.html" method="POST">
 					Select project:
 					<select name="project">
 						<xsl:for-each select="projects/project">
