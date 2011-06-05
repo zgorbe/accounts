@@ -5,7 +5,9 @@ import java.io.StringReader;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,10 +17,14 @@ import com.zotyo.accounts.client.AccountsClient;
 import com.zotyo.accounts.client.AccountsClientImpl;
 import com.zotyo.accounts.common.Constants;
 import com.zotyo.accounts.model.Account;
+import com.zotyo.accounts.validation.AccountValidator;
 
 @Controller
 public class AccountsController {
 	public static final String EMPTY_ACCOUNT = "<account></account>";
+	
+    @Autowired
+    private AccountValidator accountValidator;
 	
     @RequestMapping(value="/accounts/home.html", method=RequestMethod.GET)
     public ModelAndView home() {
@@ -46,7 +52,15 @@ public class AccountsController {
     }
 
     @RequestMapping(value="/accounts/create.html", method=RequestMethod.POST)
-    public void createAccount(Account account) {
-    	System.out.println(account.getProject());
+    public ModelAndView createAccount(Account account, BindingResult bindingResult) {
+        accountValidator.validate(account, bindingResult);
+        
+        if (bindingResult.hasErrors()) {
+           final StringReader xmlReader = new StringReader(account.toXML());
+           ModelAndView mav = new ModelAndView("new", "xmlSource", xmlReader);
+           mav.getModel().putAll(bindingResult.getModel());
+           return mav;
+        }
+        return null;
     }
 }

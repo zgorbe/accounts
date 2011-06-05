@@ -43,12 +43,7 @@ public class AccountsClientImpl implements AccountsClient {
 		HttpPost postMethod = new HttpPost(url);
 		postMethod.addHeader(BasicScheme.authenticate(credentials,"US-ASCII",false));
 		try {
-			StringWriter sw = new StringWriter();
-			JAXBContext jaxbContext = JAXBContext.newInstance(Account.class);
-			Marshaller marshaller = jaxbContext.createMarshaller();
-			marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
-			marshaller.marshal(a, sw); 
-			StringEntity stringEntity = new StringEntity(sw.toString());
+			StringEntity stringEntity = new StringEntity(a.toXML());
 			stringEntity.setContentType("application/xml");
 			postMethod.setEntity(stringEntity);
 			HttpResponse response = httpclient.execute(postMethod);
@@ -100,17 +95,13 @@ public class AccountsClientImpl implements AccountsClient {
     	HttpPut putMethod = new HttpPut(url);
     	putMethod.addHeader(BasicScheme.authenticate(credentials,"US-ASCII",false));
 		try {
-			StringWriter sw = new StringWriter();
-			JAXBContext jaxbContext = JAXBContext.newInstance(Account.class);
-			Marshaller marshaller = jaxbContext.createMarshaller();
-			marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
-			marshaller.marshal(a, sw); 
-			StringEntity stringEntity = new StringEntity(sw.toString());
+			StringEntity stringEntity = new StringEntity(a.toXML());
 			stringEntity.setContentType("application/xml");
 			putMethod.setEntity(stringEntity);
 			HttpResponse response = httpclient.execute(putMethod);
 			HttpEntity entity = response.getEntity();
 			if (entity != null) {
+			    JAXBContext jaxbContext = JAXBContext.newInstance(Account.class);
 				Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 				StringReader reader = new StringReader(EntityUtils.toString(entity));
 				account = (Account)unmarshaller.unmarshal(reader);

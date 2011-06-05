@@ -5,9 +5,16 @@
 
 package com.zotyo.accounts.model;
 
+import java.io.StringWriter;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import com.zotyo.accounts.client.AccountsClientImpl;
 
 /**
  *
@@ -138,6 +145,20 @@ public class Account {
     	}
     	sb.append("\nLast Modified: " + this.lastModified);
     	return sb.toString();
+    }
+    
+    public String toXML() {
+        StringWriter sw = new StringWriter();
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(Account.class);
+            Marshaller marshaller = jaxbContext.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
+            marshaller.marshal(this, sw);
+        } catch (Exception e) {
+            Logger.getLogger(Account.class.getName()).log(Level.SEVERE, null, e);
+            return "";
+        } 
+        return sw.toString();
     }
     
     public static boolean validateAccount(Account a) {
